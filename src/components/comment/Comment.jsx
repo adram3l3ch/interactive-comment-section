@@ -42,7 +42,7 @@ const Comment = ({ comment, reply, deleteCmnt, update, replying }) => {
                 />
             )}
             <Upvote count={comment.score} />
-            <div>
+            <div className="comment__body">
                 <header className="comment__header">
                     <img src={require("../../images/avatars/index")[name]} alt="avatar" className="avatar" />
                     <h2>
