@@ -29,7 +29,7 @@ const CommentGroup = ({ comment }) => {
                 val.replies = [
                     ...val.replies,
                     {
-                        id: val.replies.at(-1).id + 1,
+                        id: val.replies.at(-1)?.id + 1 || 0,
                         content: msg.startsWith("@") ? msg.split(" ").splice(1).join(" ") : msg,
                         createdAt: new Date(),
                         score: 0,
@@ -60,7 +60,7 @@ const CommentGroup = ({ comment }) => {
     return (
         <article className="commentGroup">
             <Comment comment={comment} reply={setReplying} deleteCmnt={deleteComment} update={update} />
-            {comment.replies.length ? (
+            {comment.replies.length || replying ? (
                 <div className="replies">
                     <div className="line" />
                     <section className="replies__main">
