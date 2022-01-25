@@ -11,8 +11,9 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
 import "./comment.css";
 
+TimeAgo.addDefaultLocale(en);
+
 const Comment = ({ comment, reply, deleteCmnt, update, replying }) => {
-    TimeAgo.addDefaultLocale(en);
     const timeAgo = new TimeAgo("en-US");
     const name = comment.user.username;
     const [isEditing, setIsEditing] = useState(false);
