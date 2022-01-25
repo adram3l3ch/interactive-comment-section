@@ -1,0 +1,57 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.box {
+    width: 450px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 2.5rem;
+}
+
+.box h2 {
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+}
+
+.box p {
+    font-size: 1.1rem;
+    line-height: 1.5em;
+    color: var(--grayish-blue);
+    margin-bottom: 1.5rem;
+}
+
+.box button {
+    padding: 1rem 2rem;
+    background-color: var(--grayish-blue);
+    color: var(--white);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.box .btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.box .btns > * {
+    flex-basis: 100%;
+}
+
+.box button:nth-child(2) {
+    background-color: var(--soft-red);
+}
+
+@media (max-width: 450px) {
+    .box {
+        width: 400px;
+    }
+}

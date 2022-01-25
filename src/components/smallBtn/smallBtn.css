@@ -1,0 +1,21 @@
+.smallBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: auto;
+    color: var(--moderate-blue);
+}
+
+.smallBtn svg {
+    transform: scale(1.1);
+}
+
+.smallBtn.danger {
+    color: var(--soft-red);
+}
+
+.smallBtn:hover {
+    opacity: 0.5;
+}

@@ -1,0 +1,41 @@
+.reply {
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.reply img {
+    width: 3rem;
+    align-self: flex-start;
+}
+
+.reply button,
+.update button {
+    text-transform: uppercase;
+    align-self: flex-start;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 500;
+    background-color: var(--moderate-blue);
+    font-size: 1rem;
+    width: max-content;
+}
+
+@media (max-width: 768px) {
+    .reply {
+        grid-template-rows: auto;
+        padding: 1rem;
+    }
+    .reply textarea {
+        grid-column: 1/4;
+        grid-row: 1/2;
+    }
+    .reply button {
+        grid-column: 3/4;
+    }
+}

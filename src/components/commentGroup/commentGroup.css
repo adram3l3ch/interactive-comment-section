@@ -1,0 +1,27 @@
+.line {
+    width: 3px;
+    background-color: var(--light-gray);
+    margin-inline: 3rem;
+    margin-bottom: 1rem;
+}
+
+.replies {
+    display: flex;
+    height: max-content;
+}
+
+.replies__main {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .line {
+        margin-inline: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .line {
+        margin-inline: 0.5px 1rem;
+    }
+}

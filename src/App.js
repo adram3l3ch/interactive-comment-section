@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import CommentGroup from "./components/commentGroup/CommentGroup";
+import Reply from "./components/reply/Reply";
+import { useGlobalContext } from "./context";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { comments } = useGlobalContext();
+    return (
+        <div className="app">
+            {comments.map(comment => (
+                <CommentGroup comment={comment} key={comment.id} />
+            ))}
+            <Reply />
+        </div>
+    );
 }
 
 export default App;

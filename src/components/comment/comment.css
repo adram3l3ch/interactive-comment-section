@@ -1,0 +1,99 @@
+.comment {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: var(--white);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.comment main {
+    flex-basis: 100%;
+}
+
+.comment__header h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
+.comment__header h2 span {
+    font-size: 0.9rem;
+    background-color: var(--moderate-blue);
+    color: white;
+    font-weight: 400;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-left: 5px;
+    display: inline-block;
+    transform: translateY(-2px);
+}
+
+.comment__header h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--grayish-blue);
+    transform: translateY(1px);
+}
+
+.comment main p {
+    color: var(--grayish-blue);
+    line-height: 1.5em;
+    font-size: 1.1rem;
+}
+
+.comment main p span {
+    font-weight: 700;
+    color: var(--moderate-blue);
+    cursor: pointer;
+}
+.comment__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 3rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.comment__header .btns {
+    margin-left: auto;
+    display: flex;
+    gap: 3rem;
+}
+
+.update textarea {
+    width: 100%;
+}
+
+.update button {
+    display: block;
+    margin-left: auto;
+    margin-top: 1rem;
+}
+
+.update button:hover,
+.reply button:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .comment {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+    .comment__header .btns {
+        position: absolute;
+        right: 1rem;
+        bottom: calc(1rem + 25px);
+        transform: translateY(50%);
+        gap: 1.5rem;
+    }
+}
