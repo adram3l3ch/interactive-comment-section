@@ -31,7 +31,7 @@ body {
 
 .app {
     margin: auto;
-    max-width: 900px;
+    max-width: 800px;
 }
 
 button {
@@ -65,10 +65,10 @@ textarea::-webkit-scrollbar {
     display: none;
 }
 
+html {
+    font-size: 14px;
+}
 @media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
     body {
         padding: 2rem 0.5rem;
     }
