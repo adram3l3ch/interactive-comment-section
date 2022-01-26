@@ -13,30 +13,20 @@ import "./comment.css";
 
 TimeAgo.addDefaultLocale(en);
 
-const Comment = ({ comment, reply, deleteCmnt, update, replying }) => {
+const Comment = ({ comment, replyingTo, setReplying, setMention }) => {
     const timeAgo = new TimeAgo("en-US");
     const name = comment.user.username;
     const [isEditing, setIsEditing] = useState(false);
     const [tempText, setTempText] = useState(comment.content);
     const [isGonnaDelete, setIsGonnaDelete] = useState(false);
-    const { setComments } = useGlobalContext();
+    const { deleteComment, updateComment } = useGlobalContext();
 
-    const updateMain = () => {
-        setComments(comments =>
-            comments.map(data => {
-                if (data.id !== comment.id) return data;
-                data.content = tempText;
-                return data;
-            })
-        );
-        setIsEditing(false);
-    };
     return (
         <article className="comment">
             {isGonnaDelete && (
                 <Modal
                     handler={() => {
-                        deleteCmnt(comment.id);
+                        deleteComment(comment.id, replyingTo);
                         setIsGonnaDelete(false);
                     }}
                     setState={setIsGonnaDelete}
@@ -57,7 +47,14 @@ const Comment = ({ comment, reply, deleteCmnt, update, replying }) => {
                                 <SmallBtn handler={() => setIsEditing(true)} text="Edit" Icon={Edit} />
                             </>
                         ) : (
-                            <SmallBtn handler={() => reply(comment.user.username)} text="Reply" Icon={Reply} />
+                            <SmallBtn
+                                handler={() => {
+                                    setMention(comment.user.username);
+                                    setReplying(true);
+                                }}
+                                text="Reply"
+                                Icon={Reply}
+                            />
                         )}
                     </div>
                 </header>
@@ -66,12 +63,12 @@ const Comment = ({ comment, reply, deleteCmnt, update, replying }) => {
                         <textarea value={tempText} onChange={e => setTempText(e.target.value)} />
                         <button
                             onClick={() => {
-                                if (replying) {
-                                    update(tempText, comment.id);
-                                    setIsEditing(false);
+                                if (replyingTo) {
+                                    updateComment(tempText, comment.id, replyingTo);
                                 } else {
-                                    updateMain();
+                                    updateComment(tempText, comment.id);
                                 }
+                                setIsEditing(false);
                             }}
                         >
                             update

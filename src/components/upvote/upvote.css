@@ -2,12 +2,12 @@
     background-color: var(--light-gray-200);
     border-radius: 10px;
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 110px;
+    width: 3.5rem;
+    height: 8rem;
     color: var(--moderate-blue);
     align-self: flex-start;
 }
@@ -27,9 +27,9 @@
 
 @media (max-width: 768px) {
     .upvote {
-        flex-direction: row;
-        width: 130px;
-        height: 45px;
+        flex-direction: row-reverse;
+        width: 9rem;
+        height: 3rem;
         gap: 1.75rem;
     }
 }

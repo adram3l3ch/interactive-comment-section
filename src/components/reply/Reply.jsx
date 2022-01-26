@@ -3,19 +3,19 @@ import { useGlobalContext } from "../../context";
 import data from "../../data.json";
 import "./reply.css";
 
-const Reply = ({ replying, reply }) => {
+const Reply = ({ cid, mention }) => {
     const [msg, setMsg] = useState("");
-    const { setComments } = useGlobalContext();
+    const { setComments, reply } = useGlobalContext();
     const inputRef = useRef();
 
     useEffect(() => {
-        if (replying) setMsg(`@${replying} `);
+        if (cid) setMsg(`@${mention} `);
         inputRef.current.focus();
-    }, [replying]);
+    }, [cid, mention]);
 
     const send = () => {
         if (msg) {
-            if (replying) reply(msg, replying);
+            if (cid) reply(msg, cid, mention);
             else
                 setComments(comments => [
                     ...comments,
@@ -33,9 +33,9 @@ const Reply = ({ replying, reply }) => {
     };
     return (
         <footer className="reply">
-            <img src={require("../../images/avatars/index")[data.currentUser.username]} alt="" />
+            <img src={require("../../images/avatars/index")[data.currentUser.username]} alt="avatar" />
             <textarea placeholder="Add a comment..." value={msg} onChange={e => setMsg(e.target.value)} ref={inputRef} />
-            <button onClick={send}>{replying ? "Reply" : "Send"}</button>
+            <button onClick={send}>{cid ? "Reply" : "Send"}</button>
         </footer>
     );
 };
