@@ -15,10 +15,14 @@ const CommentGroup = ({ comment }) => {
                 setReplying={setReplying}
                 setMention={setMention}
             />
-            {comment.replies.length || replying ? (
+            {(comment.replies.length || replying) && (
                 <div className="replies">
                     <div className="line" />
                     <section className="replies__main">
+                        <h2 style={{ position: "absolute", left: "-99999999px" }}>
+                            reply group
+                        </h2>
+
                         {comment.replies.map((reply) => (
                             <Comment
                                 comment={reply}
@@ -31,8 +35,6 @@ const CommentGroup = ({ comment }) => {
                         {replying && <Reply cid={comment.id} mention={mention} />}
                     </section>
                 </div>
-            ) : (
-                ""
             )}
         </section>
     );
