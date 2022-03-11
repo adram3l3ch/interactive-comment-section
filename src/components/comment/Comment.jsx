@@ -23,6 +23,7 @@ const Comment = ({ comment, replyingTo, setReplying, setMention }) => {
 
     return (
         <article className="comment">
+            <h3 style={{ position: "absolute", left: "-99999999px" }}>Comment</h3>
             {isGonnaDelete && (
                 <Modal
                     handler={() => {
@@ -35,16 +36,33 @@ const Comment = ({ comment, replyingTo, setReplying, setMention }) => {
             <Upvote count={comment.score} />
             <div className="comment__body">
                 <header className="comment__header">
-                    <img src={require("../../images/avatars/index")[name]} alt="avatar" className="avatar" />
+                    <img
+                        src={require("../../images/avatars/index")[name]}
+                        alt="avatar"
+                        className="avatar"
+                    />
                     <h2>
                         {name} {name === data.currentUser.username && <span>you</span>}
                     </h2>
-                    <h3>{typeof comment.createdAt === "string" ? comment.createdAt : timeAgo.format(comment.createdAt)}</h3>
+                    <h3>
+                        {typeof comment.createdAt === "string"
+                            ? comment.createdAt
+                            : timeAgo.format(comment.createdAt)}
+                    </h3>
                     <div className="btns">
                         {name === data.currentUser.username ? (
                             <>
-                                <SmallBtn handler={() => setIsGonnaDelete(true)} text="Delete" Icon={Delete} danger />
-                                <SmallBtn handler={() => setIsEditing(true)} text="Edit" Icon={Edit} />
+                                <SmallBtn
+                                    handler={() => setIsGonnaDelete(true)}
+                                    text="Delete"
+                                    Icon={Delete}
+                                    danger
+                                />
+                                <SmallBtn
+                                    handler={() => setIsEditing(true)}
+                                    text="Edit"
+                                    Icon={Edit}
+                                />
                             </>
                         ) : (
                             <SmallBtn
@@ -60,7 +78,10 @@ const Comment = ({ comment, replyingTo, setReplying, setMention }) => {
                 </header>
                 {isEditing ? (
                     <div className="update">
-                        <textarea value={tempText} onChange={e => setTempText(e.target.value)} />
+                        <textarea
+                            value={tempText}
+                            onChange={(e) => setTempText(e.target.value)}
+                        />
                         <button
                             onClick={() => {
                                 if (replyingTo) {
@@ -76,7 +97,9 @@ const Comment = ({ comment, replyingTo, setReplying, setMention }) => {
                     </div>
                 ) : (
                     <p>
-                        {comment.replyingTo && <span>{"@" + comment.replyingTo + " "}</span>}
+                        {comment.replyingTo && (
+                            <span>{"@" + comment.replyingTo + " "}</span>
+                        )}
                         {comment.content}
                     </p>
                 )}
